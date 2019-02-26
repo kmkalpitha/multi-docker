@@ -3,20 +3,20 @@ services:
   - docker
 
 before_install:
-  - docker build -t kalpithakm/react-test -f ./client/Dockerfile.dev ./client
+  - docker build -t kalpitha/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run kalpithakm/react-test npm test -- --coverage
+  - docker run kalpitha/react-test npm test -- --coverage
 
 after_success:
-  - docker build -t kalpithakm/multi-client ./client
-  - docker build -t kalpithakm/multi-nginx ./nginx
-  - docker build -t kalpithakm/multi-server ./server
-  - docker build -t kalpithakm/multi-worker ./worker
+  - docker build -t kalpitha/multi-client ./client
+  - docker build -t kalpitha/multi-nginx ./nginx
+  - docker build -t kalpitha/multi-server ./server
+  - docker build -t kalpitha/multi-worker ./worker
   # Login to the docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Take those images and push them to docker hub
-  - docker push kalpithakm/multi-client
-  - docker push kalpithakm/multi-nginx
-  - docker push kalpithakm/multi-server
-  - docker push kalpithakm/multi-worker
+  - docker push kalpitha/multi-client
+  - docker push kalpitha/multi-nginx
+  - docker push kalpitha/multi-server
+  - docker push kalpitha/multi-worker
