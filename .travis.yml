@@ -9,14 +9,12 @@ script:
   - docker run kalpitha/react-test npm test -- --coverage
 
 after_success:
-  - docker build -t kalpitha/multi-client ./client
-  - docker build -t kalpitha/multi-nginx ./nginx
-  - docker build -t kalpitha/multi-server ./server
-  - docker build -t kalpitha/multi-worker ./worker
-  # Login to the docker CLI
+  - docker build -t kalpitha/multi-docker-client ./client
+  - docker build -t kalpitha/multi-docker-nginx ./nginx
+  - docker build -t kalpitha/multi-docker-server ./server
+  - docker build -t kalpitha/multi-docker-worker ./worker
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
-  # Take those images and push them to docker hub
-  - docker push kalpitha/multi-client
-  - docker push kalpitha/multi-nginx
-  - docker push kalpitha/multi-server
-  - docker push kalpitha/multi-worker
+  - docker push kalpitha/multi-docker-client 
+  - docker push kalpitha/multi-docker-nginx
+  - docker push kalpitha/multi-docker-server
+  - docker push kalpitha/multi-docker-worker
