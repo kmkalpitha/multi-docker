@@ -13,7 +13,7 @@ after_success:
   - docker build -t kalpithakm/multi-docker-nginx ./nginx
   - docker build -t kalpithakm/multi-docker-server ./server
   - docker build -t kalpithakm/multi-docker-worker ./worker
-  - docker login -u $DOCKER_ID -p $DOCKER_PASSWORD
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   - docker push kalpithakm/multi-docker-client 
   - docker push kalpithakm/multi-docker-nginx
   - docker push kalpithakm/multi-docker-server
@@ -30,4 +30,4 @@ deploy:
     branch: master
   access_key_id: $AWS_ACCESS_KEY
   secret_access_key:
-    secure: $AWS_SECRET_KEY
+    secure: "$AWS_SECRET_KEY"
