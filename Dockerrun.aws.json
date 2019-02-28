@@ -3,7 +3,27 @@
 	"containerDefinitions": [
      {
        "name": "client",
-       "image": ""
+       "image": "kalpithakm/multi-client"
+       "hostname": "client",
+       "essential": false
+     },
+     {
+       "name": "server",
+       "image": "kalpithakm/multi-server"
+       "hostname": "api",
+       "essential": false
+     },
+     {
+       "name": "worker",
+       "image": "kalpithakm/multi-worker"
+       "hostname": "worker",
+       "essential": false
+     },
+     {
+       "name": "nginx",
+       "image": "kalpithakm/multi-nginx"
+       "hostname": "nginx",
+       "essential": true
      }
 	]
 }
